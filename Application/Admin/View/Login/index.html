@@ -2,34 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>登陆系统</title>
+    <title>登录系统</title>
 
     <!-- header information -->
     <include file="Common:header" />
+    <link href="__PUBLIC__/Css/signin.css" rel="stylesheet">
     
 </head>
 <body>
-    <h1>登陆</h1>
-    <form action="{:U(MODULE_NAME.'/Login/loginHandle')}" method="post">
-        <table>
-            <tr>
-                <td align="right">用户名：</td>
-                <td>
-                    <input type="text" name="username" />
-                </td>
-            </tr>
-            <tr>
-                <td align="right">密码：</td>
-                <td>
-                    <input type="password" name="password" />
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <input type="submit" value="登陆" />
-                </td>
-            </tr>
-        </table>
-    </form>
+    <div class="container">
+        <form class="form-signin" action="{:U(MODULE_NAME.'/Login/loginHandle')}" method="post">
+            <h2 class="form-signin-heading">登录系统</h2>
+                <label for="username" class="sr-only">用户名</label>
+                <input type="text" id="username" class="form-control" placeholder="User Name"
+                name="username" required autofocus>
+
+                <label for="inputPassword" class="sr-only">密码</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password"
+                name="password" required>
+
+                <div class="input-wrap text--left">
+                    <button type="submit" class="btn btn-lg btn-primary"
+                    value="登录">登录</button>
+                </div>
+
+            <!--       <table>
+                <tr>
+                    <td>用户名</td>
+                    <td>
+                        <input type="text" name="username" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>密码</td>
+                    <td>
+                        <input type="password" name="password" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="登陆" />
+                    </td>
+                </tr>
+                </table> -->
+        </form>
+    </div>
 </body>
 </html>
