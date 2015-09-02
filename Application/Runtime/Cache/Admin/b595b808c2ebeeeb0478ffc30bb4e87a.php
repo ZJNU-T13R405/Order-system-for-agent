@@ -3,6 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>后台管理</title>
+
+    <!-- header information -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Le styles -->
+<link href="/Order-system-for-agent/Application/Admin/Common/Public/Css/bootstrap-combined.min.css" rel="stylesheet">
+
+<script src="/Order-system-for-agent/Application/Admin/Common/Public/Js/jquery.js"></script>
+<script src="/Order-system-for-agent/Application/Admin/Common/Public/Js/bootstrap.min.js"></script>
+<link href="/Order-system-for-agent/Application/Admin/Common/Public/Css/style.css" rel="stylesheet">
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<![endif]-->
+    
 </head>
 <body>
     <h1>管理页面</h1>

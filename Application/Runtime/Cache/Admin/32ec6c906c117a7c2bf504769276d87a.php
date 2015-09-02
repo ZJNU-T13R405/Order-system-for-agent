@@ -1,53 +1,47 @@
-<?php if (!defined('THINK_PATH')) exit();?><!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE html>
-<html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html lang="en">
 <head>
-<title>登陆后台管理</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link href="/Order-system-for-agent/Application/Admin/Common/Public/Css/style.css" rel='stylesheet' type='text/css' />
-<script src="/Order-system-for-agent/Application/Admin/Common/Public/Js/jquery-1.11.0.js"></script>
+    <meta charset="UTF-8">
+    <title>登陆系统</title>
+
+    <!-- header information -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Le styles -->
+<link href="/Order-system-for-agent/Application/Admin/Common/Public/css/bootstrap-combined.min.css" rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<link href="css/style.css" rel="stylesheet">
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<![endif]-->
+    
 </head>
 <body>
-<script>$(document).ready(function(c) {
-	$('.close').on('click', function(c){
-		$('.login-form').fadeOut('slow', function(c){
-	  		$('.login-form').remove();
-		});
-	});	  
-});
-</script>
-<!--SIGN UP-->
-<h1>登陆后台管理</h1>
-<div class="login-form">
-	<div class="close"> </div>
-		<div class="head-info">
-			<label class="lbl-1"> </label>
-			<label class="lbl-2"> </label>
-			<label class="lbl-3"> </label>
-		</div>
-			<div class="clear"> </div>
-	<div class="avtar">
-		<img src="/Order-system-for-agent/Application/Admin/Common/Public/Images/avtar.png" />
-	</div>
-	<form action="<?php echo U(MODULE_NAME.'/Login/loginHandle');?>" method="post">
-		<input type="text" class="text" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" name="username" >
-			<div class="key">
-		<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" name="password" >
-			</div>
-		<div class="signin">
-			<input type="submit" value="Login" >
-		</div>
-	</form>
-</div>
-<div class="copy-rights">
-
-</div>
-
+    <h1>登陆</h1>
+    <form action="<?php echo U(MODULE_NAME.'/Login/loginHandle');?>" method="post">
+        <table>
+            <tr>
+                <td align="right">用户名：</td>
+                <td>
+                    <input type="text" name="username" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right">密码：</td>
+                <td>
+                    <input type="password" name="password" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="登陆" />
+                </td>
+            </tr>
+        </table>
+    </form>
 </body>
 </html>
