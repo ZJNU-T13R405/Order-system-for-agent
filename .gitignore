@@ -44,6 +44,6 @@ Temporary Items
 # =========================
 # Project
 # =========================
-Application/Runtime/Cache/Admin 
-Application/Runtime/Cache/Home
-
+Application/Runtime/Cache/Admin/
+Application/Runtime/Cache/Home/
+Application/Runtime/Logs/
