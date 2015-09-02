@@ -1,57 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>用户首页</title>
+  <meta charset="UTF-8">
+  <title>用户首页</title>
 
-    <!-- header information -->
-    <include file="Common:header" />
-    
+  <!-- header information -->
+  <include file="Common:header" />
+
 </head>
 <body>
-    <h1>您好！{$userinfo['nickname']}</h1>
-    <h2>您的账户余额：{$agent.account}元</h2>
-    <h2>请选择接下来的操作</h2>
-    <ul>
-        <li>购物
-            <ul>
-                <li>
-                    <a href="{:U(MODULE_NAME.'/Product/index')}">查看所有商品分类</a>
+    <div class="container">
+      <div class="masthead">
+        <h3 class="muted">代理系统</h3>
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="container">
+              <ul class="nav">
+                <li class="active"><a href="index.html">Home</a></li>
+
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    购物
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="{:U(MODULE_NAME.'/Product/index')}">查看所有商品分类</a> </li>
+                    <li><a href="{:U(MODULE_NAME.'/Cart/index')}">查看购物车</a></li>
+                  </ul>
                 </li>
-                <li>
-                    <a href="{:U(MODULE_NAME.'/Cart/index')}">查看购物车</a>
+                
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    订单管理
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li> <a href="{:U(MODULE_NAME.'/Order/index')}">查看正在进行的订单</a> </li>
+                    <li> <a href="{:U(MODULE_NAME.'/Order/orderCompleted')}">查看过往订单</a> </li>
+                  </ul>
                 </li>
-            </ul>
-        </li>
-        <br>
-        <li>订单管理
-            <ul>
-                <li>
-                    <a href="{:U(MODULE_NAME.'/Order/index')}">查看正在进行的订单</a>
+
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    个人信息管理
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li> <a href="#">账户资金</a> </li>
+                    <li> <a href="#"> 更改个人信息</a> </li>
+                    <li> <a href="#"> 更改密码</a> </li>
+                    <if condition="$userinfo['role'] LT 2">
+                      <li> <a href="{:U('Admin/Index/index')}">进入后台管理界面</a><br></li>
+                    </if>
+                    <li> <a href="{:U(MODULE_NAME.'/Index/logout')}">退出登陆</a> </li>
+                  </ul>
                 </li>
-                <li>
-                    <a href="{:U(MODULE_NAME.'/Order/orderCompleted')}">查看过往订单</a>
-                </li>
-            </ul>
-        </li>
-        <br>
-        <li>个人信息管理
-            <ul>
-                <li>
-                    账户资金
-                </li>
-                <li>
-                    更改个人信息
-                </li>
-                <li>
-                    更改密码
-                </li>
-            </ul>
-        </li>
-    </ul>
-    <if condition="$userinfo['role'] LT 2">
-        <a href="{:U('Admin/Index/index')}">进入后台管理界面</a><br>
-    </if>
-    <a href="{:U(MODULE_NAME.'/Index/logout')}">退出登陆</a>
-</body>
-</html>
+
+              </ul>
+            </div>
+          </div>
+        </div><!-- /.navbar -->
+      </div>
+
+      <!-- Jumbotron -->
+      <div class="jumbotron">
+        <p class="lead"> 您好！{$userinfo['nickname']}<br>您的账户余额：{$agent.account}元 </p>
+      </div>
+
+      <!-- Example row of columns -->
+      <hr>
+
+      <div class="footer">
+        <p>&copy; Company 2014</p>
+      </div>
+
+    </div> <!-- /container -->
+  </body>
+  </html>
