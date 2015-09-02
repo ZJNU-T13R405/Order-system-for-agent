@@ -43,7 +43,7 @@
                             [<a href="{:U(MODULE_NAME.'/Order/returnGoods', array('oid' => $v['id']))}">退货申请</a>]
                         </if>
                         <if condition="$v['status_code'] eq 1">
-                            [<a href="">取消订单</a>]
+                            [<a href="{:U(MODULE_NAME.'/Order/cancelOrder', array('oid' => $v['id']))}">取消订单</a>]
                         </if>
                     </td>
                 </tr>

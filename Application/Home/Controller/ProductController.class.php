@@ -7,8 +7,9 @@ use Home\Common\Controller\CommonController;
 class ProductController extends CommonController {
 
     public function index () {
+        // 暂未加入分页功能
         $this->cate = M('cate')->select();
-        $this->products = M('product')->limit(5)->order('time DESC')->select();
+        $this->products = M('product')->order('time DESC')->select();
 
         $this->display();
     }

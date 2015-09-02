@@ -40,11 +40,16 @@
                             上架时间：{$v.time|date="Y年m月d日", ###}</br>
                             备注：{$v.remark}
                         </p>
-                        <a href="" class="btn btn-primary addToCart">
+                        <if condition="$v.remainder eq 0">
+                            <a href="#" class="btn btn-primary addToCart">
+                            商品无库存</a>
+                        <else />
+                            <a href="{:U(MODULE_NAME.'/Cart/addToCart', array('pid' => $v['id']))}" class="btn btn-primary addToCart">
                             添加至购物车
-                            <input type="hidden" class="pid" value="{$v.id}">
-                            <input type="hidden" class="remainder" value="{$v.remainder}">
-                        </a>
+                                <input type="hidden" class="pid" value="{$v.id}">
+                                <input type="hidden" class="remainder" value="{$v.remainder}">
+                            </a>
+                        </if>
                     </div>
                 </div>
             </li>

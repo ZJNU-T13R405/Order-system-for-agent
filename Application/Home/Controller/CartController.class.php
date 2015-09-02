@@ -19,27 +19,24 @@ class CartController extends CommonController {
         $this->display();
     }
 
-    // 添加到购物车，ajax方式处理
+    // 添加到购物车处理
     public function addToCart () {
         $db = M('cart');
         $pid = I('pid', 0, 'intval');
         $cart = array(
             'aid' => (int) $_SESSION['uid'],
             'pid' => $pid,
-            'num' => 1
+            //'num' => 1
             );
-
-        $return = array();
 
         // 检查购物车中是否已有相同商品
         if ($db->where($cart)->count()) {
-            $return['status'] = 0;
+            echo $db->where($cart)->count();die;
+            $this->error('购物车中已有相同商品');
         } else {
             $db->add($cart);
-            $return['status'] = 1;
+            $this->success('商品添加成功');
         }
-
-        $this->ajaxReturn($return, 'json');
     }
 
     // 清空购物车

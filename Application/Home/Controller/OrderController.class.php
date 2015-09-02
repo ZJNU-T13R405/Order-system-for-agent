@@ -135,5 +135,46 @@ class OrderController extends CommonController {
         }
     }
 
+    // 取消订单
+    public function cancelOrder () {
+        $aid = $_SESSION['uid'];
+        $oid = I('oid', 0, 'intval');
+        $where = array(
+            'id' => $oid,
+            'aid' => $aid
+        );
+        $db = M('order');
+
+        // 检查登录情况
+        if ($db->where($where)->find()) {
+            $order = \Common\Util\OrdersProducts::order($oid, $aid);
+
+            // 增加订单内商品库存
+            foreach ($order['products'] as $key => $v) {
+                $new_remainder = $v['remainder'] + $v['num'];
+                // 插入ramainder表
+                $remainder = array(
+                    'uid' => $aid,
+                    'pid' => $v['id'],
+                    'operate' => 1,
+                    'remark' => '用户取消订单',
+                    'last_remainder' => $v['remainder'],
+                    'new_remainder' => $new_remainder
+                );
+                M('remainder')->add($remainder);
+
+                //修改product表
+                M('product')->where('id='.$v['id'])->save(array('remainder' => $new_remainder));
+            }
+
+            // 修改order表
+            $db->where($where)->save(array('status' => 0));
+
+            $this->success('订单已取消');
+        } else {
+            $this->error('请检查该订单是否属于该账户');
+        }
+    }
+
 }
 ?>
