@@ -31,7 +31,6 @@ class CartController extends CommonController {
 
         // 检查购物车中是否已有相同商品
         if ($db->where($cart)->count()) {
-            echo $db->where($cart)->count();die;
             $this->error('购物车中已有相同商品');
         } else {
             $db->add($cart);
