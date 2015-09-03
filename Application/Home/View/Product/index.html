@@ -18,7 +18,8 @@
         <include file="Common:nav" />
 
         <h1>所有分类</h1>
-        <select name="category" class="input-medium" onchange="document.location.href=this.value" onfocus="this.selectedIndex = -1;">
+        <select name="category" class="input-medium" onchange="document.location.href=this.value">
+            <option> 请选择 </option>
             <foreach name="cate" item="v">
                 <option value="{:U(MODULE_NAME.'/Product/showByCate', array('cid' => $v['id'], 'cateTitle' => $v['title']))}">{$v.title}</option>
             </foreach>
