@@ -14,48 +14,48 @@
     
 </head>
 <body>
-    <include file="Common:nav" />
+    <div class="container">
+        <include file="Common:nav" />
 
-    <h1>所有分类</h1>
-    <select name="category" class="input-medium" onchange="document.location.href=this.value">
-        <foreach name="cate" item="v">
-            <option value="{:U(MODULE_NAME.'/Product/showByCate', array('cid' => $v['id'], 'cateTitle' => $v['title']))}">{$v.title}</option>
-        </foreach>
-    </select>
+        <h1>所有分类</h1>
+        <select name="category" class="input-medium" onchange="document.location.href=this.value">
+            <foreach name="cate" item="v">
+                <option value="{:U(MODULE_NAME.'/Product/showByCate', array('cid' => $v['id'], 'cateTitle' => $v['title']))}">{$v.title}</option>
+            </foreach>
+        </select>
 
-    <h1>最新上架</h1>
-    <div class="row-fluid">
-        <ul class="thumbnails">
-
-            <foreach name="products" item="v">
-              <li class="span4">
-                <div class="thumbnail">
-                    <img src="http://localhost/agentapp/{$v.image}" width="60px">
-                    <div class="caption">
-                        <h3>{$v.title}</h3>
-                        <p>
-                            价格：{$v.price}（元)</br>
-                            库存：{$v.remainder}</br>
-                            配送重量（kg）：{$v.weight}</br>
-                            上架时间：{$v.time|date="Y年m月d日", ###}</br>
-                            备注：{$v.remark}
-                        </p>
-                        <if condition="$v.remainder eq 0">
-                            <a href="#" class="btn btn-primary addToCart">
-                            商品无库存</a>
-                        <else />
-                            <a href="{:U(MODULE_NAME.'/Cart/addToCart', array('pid' => $v['id']))}" class="btn btn-primary addToCart">
-                            添加至购物车
-                                <input type="hidden" class="pid" value="{$v.id}">
-                                <input type="hidden" class="remainder" value="{$v.remainder}">
-                            </a>
-                        </if>
-                    </div>
-                </div>
-            </li>
-        </foreach>
-    </ul>
-</div>
-
+        <h1>最新上架</h1>
+        <div class="row-fluid">
+            <ul class="thumbnails">
+                <foreach name="products" item="v">
+                  <li class="span3">
+                    <div class="thumbnail">
+                        <img src="http://localhost/agentapp/{$v.image}" width="60px">
+                        <div class="caption">
+                            <h3>{$v.title}</h3>
+                            <p>
+                                价格：{$v.price}（元)</br>
+                                库存：{$v.remainder}</br>
+                                配送重量（kg）：{$v.weight}</br>
+                                上架时间：{$v.time|date="Y年m月d日", ###}</br>
+                                备注：{$v.remark}
+                            </p>
+                            <if condition="$v.remainder eq 0">
+                                <a href="#" class="btn btn-primary addToCart">
+                                    商品无库存</a>
+                                    <else />
+                                    <a href="{:U(MODULE_NAME.'/Cart/addToCart', array('pid' => $v['id']))}" class="btn btn-primary addToCart">
+                                        添加至购物车
+                                        <input type="hidden" class="pid" value="{$v.id}">
+                                        <input type="hidden" class="remainder" value="{$v.remainder}">
+                                    </a>
+                                </if>
+                            </div>
+                        </div>
+                    </li>
+                </foreach>
+            </ul>
+        </div> <!-- /row-fluid -->
+    </div> <!-- /container -->
 </body>
 </html>
