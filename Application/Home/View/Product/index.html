@@ -26,10 +26,13 @@
         </select>
 
         <h1>最新上架</h1>
-        <div class="row-fluid">
-            <ul class="thumbnails">
-                <foreach name="products" item="v">
-                  <li class="span3">
+        <!-- 布局换行利用products[*][list]处理 -->
+        <foreach name="products" item="v">
+            <if condition="$v.list eq 0">
+                <div class="row-fluid">
+                <ul class="thumbnails">
+            </if>
+                <li class="span3">
                     <div class="thumbnail">
                         <img src="http://{$_SERVER['SERVER_NAME']}{$_SERVER['CONTEXT_PREFIX']}/Order-system-for-agent/{$v['image']}" />
                         <div class="caption">
@@ -50,13 +53,15 @@
                                         <input type="hidden" class="pid" value="{$v.id}">
                                         <input type="hidden" class="remainder" value="{$v.remainder}">
                                     </a>
-                                </if>
-                            </div>
+                            </if>
                         </div>
-                    </li>
-                </foreach>
-            </ul>
-        </div> <!-- /row-fluid -->
+                    </div>
+                </li>
+            <if condition="$v.list eq 3">
+                </ul>
+                </div> <!-- /row-fluid -->
+            </if>
+        </foreach>
     </div> <!-- /container -->
 </body>
 </html>

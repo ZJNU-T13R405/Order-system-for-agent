@@ -9,8 +9,23 @@ class ProductController extends CommonController {
     public function index () {
         // 暂未加入分页功能
         $this->cate = M('cate')->select();
-        $this->products = M('product')->order('time DESC')->select();
+        $products = M('product')->order('time DESC')->select();
 
+        $list = 0;
+        foreach ($products as $key => &$v) {
+            $v['list'] = $list;
+
+            if ($list == 3) {
+                $list = 0;
+                continue;
+            }
+
+            $list++;
+        }
+
+        p($products);
+
+        $this->products = $products;
         $this->display();
     }
 
