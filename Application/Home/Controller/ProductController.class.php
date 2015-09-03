@@ -23,8 +23,6 @@ class ProductController extends CommonController {
             $list++;
         }
 
-        p($products);
-
         $this->products = $products;
         $this->display();
     }
