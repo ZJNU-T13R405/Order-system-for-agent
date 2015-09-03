@@ -56,7 +56,7 @@ class CartController extends CommonController {
         $products_info = $_POST['info'];
 
         $rule = M('express')->where($data)->find();
-        if (empty($rule)) {
+        if (empty($rule) && $data['type'] != 0) {
             $return = array(
                 'status' => 0
                 );
@@ -78,7 +78,8 @@ class CartController extends CommonController {
             // 折后价格
             $discount_price = $price * $discount;            
             // 配送费用
-            $express_price = self::express_price($weight, $rule);
+            $express_price = $data['type'] != 0 ? self::express_price($weight, $rule) : 0;
+            // $express_price = self::express_price($weight, $rule);
             $tot_price = $discount_price + $express_price;
 
             $return = array(

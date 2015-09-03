@@ -5,7 +5,9 @@ $(function() {
         var express = $("#express").val();
         var area_code = area[0];
 
-        if (express != "0") {
+        console.log("...");
+
+        // if (express != "0") {
             if(area_code == "00") {
                 alert("请选择配送地区！");
             } else {
@@ -47,7 +49,7 @@ $(function() {
                     }, 'json'
                 );
             }
-        }
+        // }
 
     });
     
