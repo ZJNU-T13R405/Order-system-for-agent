@@ -20,7 +20,7 @@ class ProductController extends CommonController {
 
         // 分页设置
         $count = $db->where('cid='.$cid)->count();
-        $Page = new \Think\Page($count, 10);
+        $Page = new \Think\Page($count, 36);
         $show = $Page->show();
 
         $this->cate = I('cateTitle');
